@@ -1,24 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
+import CategoryComponent from './components/CategoryComponent';
+import HeadingComponent from './components/HeadingComponent';
+import { ThemeProvider } from '@emotion/react';
+import { mainTheme } from './themes/MainTheme';
+import React from 'react';
 
 function App() {
   return (
+    <ThemeProvider theme={mainTheme}>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <HeadingComponent></HeadingComponent>
+        <CategoryComponent category={{name: "Breakfast", picture: null}}></CategoryComponent>
     </div>
+    </ThemeProvider>
   );
 }
 
