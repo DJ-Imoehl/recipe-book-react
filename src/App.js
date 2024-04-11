@@ -11,7 +11,12 @@ function App() {
     <ThemeProvider theme={mainTheme}>
     <div className="App">
         <HeadingComponent></HeadingComponent>
-        <CategoryComponent category={{name: "Breakfast", picture: null}}></CategoryComponent>
+        <div className="grid lg:grid-cols-4 gap-4 md:grid-cols-2 sm:grid-cols-1">
+          <CategoryComponent category={{name: "Breakfast", picture: null}}></CategoryComponent>
+          <CategoryComponent category={{name: "Quick Meals", picture: null}}></CategoryComponent>
+          <CategoryComponent category={{name: "Healthy", picture: null}}></CategoryComponent>
+          <CategoryComponent category={{name: "Salads", picture: null}}></CategoryComponent>
+        </div>
     </div>
     </ThemeProvider>
   );

@@ -1,8 +1,12 @@
 import React from "react"
+import "./CategoryComponent.css"
 
 const CategoryComponent = ({category}) => {
 
-    return <h1 className="bg-blue-500 text-white p-4">THIS IS THE CATEGORY IS {category.name}</h1>;
+    return (<div className="categoryComponent">
+        <div></div>
+        <div className="category-text"><h3>{category.name}</h3></div>
+    </div>);
 }
 
 export default CategoryComponent;
