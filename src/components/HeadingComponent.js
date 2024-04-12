@@ -9,11 +9,11 @@ const HeadingComponent = () => {
 
     return (<Box className="grid-cols-8 heading">
         <h2 className="title-text">DJ's Recipes</h2>
-        <AppBar position="static" component="nav">
-            <Toolbar>
-                <Button style={{color: "black"}}>Home</Button>
-                <Button>About</Button>
-                <Button>Recipes</Button>
+        <AppBar className="app-bar" position="static" component="nav">
+            <Toolbar gutters="40px">
+                <Button color="secondary">Home</Button>
+                <Button color="secondary">About</Button>
+                <Button color="secondary">Recipes</Button>
                 <IconButton
                     size="large"
                     edge="start"
