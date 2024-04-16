@@ -44,7 +44,7 @@ const RecipePage = () => {
         <div className="flex">
             <div className="flex-auto w-64">
                 <h2 className='recipe-title-text'>{recipe.name}</h2>
-                <p>{recipe.story}</p>
+                <p className='recipe-description'>{recipe.story}</p>
                 <img className='recipe-main-image' src="/resources/breakfast.jpg"></img>
                 <div className='tags'>
                     <Stack direction="row" spacing={1}>
