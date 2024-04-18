@@ -6,12 +6,26 @@ import { Chip, Stack } from '@mui/material';
 const RecipePage = () => {
     const {recipeId} = useParams();
     const [isRecipeLoaded, setIsRecipeLoaded] = useState(false);
+    const [isCategoryLoaded, setIsCategoryLoaded] = useState(false);
     const [recipe, setRecipe] = useState({});
+    const [categories, setCategories] = useState({});
     const [error, setError] = useState(null);
 
     let categoryChips = [];
     let ingredients = [];
     let instructions = [];
+    const getCategories = (loadedRecipe) => {
+        fetch(loadedRecipe._links?.categories.href)
+           .then((response) => response.json())
+           .then((data) => {
+              console.log(data);
+              setIsCategoryLoaded(true);
+              setCategories(data._embedded.categoryList);
+        }).catch(err => {
+            console.log(err);
+            setError(err);
+        });
+    }
     useEffect(() => {
         fetch('http://localhost:8080/recipes/' + recipeId)
            .then((response) => response.json())
@@ -19,24 +33,30 @@ const RecipePage = () => {
               console.log(data);
               setIsRecipeLoaded(true);
               setRecipe(data);
+              getCategories(data);
            }).catch(err => {
             console.log(err);
             setError(err);
            });
      }, []);
 
-    if(isRecipeLoaded) {
-        for(const category of recipe.categorylist) {
-            categoryChips.push(<Chip label={category.name} color="primary"></Chip>);
-        }
+     if(isRecipeLoaded) {
+        
 
-        for(const ingredient of recipe.ingredientList) {
+         for(const ingredient of recipe.ingredientList) {
 
             ingredients.push(<li><p>{ingredient.name} {ingredient.amount ? <i> - {ingredient.amount} {ingredient.unit}</i> : null} {ingredient.optional ? <i>- Optional</i> : null}</p></li>)
         }
 
         for (const instruction of recipe.directions) {
             instructions.push(<li>{instruction}</li>)
+        }
+     }
+     
+
+    if(isCategoryLoaded) {
+        for(const category of categories) {
+            categoryChips.push(<Chip label={category.name} color="primary"></Chip>);
         }
     }
 

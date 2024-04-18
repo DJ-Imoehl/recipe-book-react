@@ -12,12 +12,12 @@ const HomePageComponent = () => {
 
     //TODO: Load Category List here
     useEffect(() => {
-        fetch('http://localhost:8080/recipes')
+        fetch('http://localhost:8080/categories/featured')
            .then((response) => response.json())
            .then((data) => {
               console.log(data);
               setIsCategoriesLoaded(true);
-              setCategories(data);
+              setCategories(data._embedded.categoryList);
            }).catch(err => {
             console.log(err);
             setError(err);
@@ -44,12 +44,14 @@ const HomePageComponent = () => {
         console.log(recipe);
         listedRecipes.push(<CategoryComponent category={{name: recipe.name, picture: null}}></CategoryComponent>);
      }
+     const listedCategories = [];
+     for(const cat of categories) {
+      console.log("Category: " + cat.name);
+      listedCategories.push(<CategoryComponent category={cat}></CategoryComponent>)
+     }
 
     return (<div><div className="grid lg:grid-cols-4 gap-4 md:grid-cols-2 sm:grid-cols-1">
-    <CategoryComponent category={{name: "Breakfast", picture: null}}></CategoryComponent>
-    <CategoryComponent category={{name: "Quick Meals", picture: null}}></CategoryComponent>
-    <CategoryComponent category={{name: "Healthy", picture: null}}></CategoryComponent>
-    <CategoryComponent category={{name: "Salads", picture: null}}></CategoryComponent>
+    {listedCategories}
   </div>
   <div className='divider'></div>
   <h2 className='subtitle'>Most Recent Recipes</h2>
