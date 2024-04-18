@@ -2,6 +2,7 @@ import React from "react"
 import CategoryComponent from './CategoryComponent';
 import './HomePageComponent.css'
 import { useState, useEffect, setPosts } from "react";
+import { Link } from "react-router-dom";
 
 const HomePageComponent = () => {
     const [isCategoriesLoaded, setIsCategoriesLoaded] = useState(false);
@@ -42,7 +43,7 @@ const HomePageComponent = () => {
      for(const recipe of recentRecipes) {
         console.log("Recipe name: " + recipe.name);
         console.log(recipe);
-        listedRecipes.push(<CategoryComponent category={{name: recipe.name, picture: null}}></CategoryComponent>);
+        listedRecipes.push(<Link to={"/recipes/" + recipe.id}><CategoryComponent category={{name: recipe.name, picture: null}}></CategoryComponent></Link>);
      }
      const listedCategories = [];
      for(const cat of categories) {
