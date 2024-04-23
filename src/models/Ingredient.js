@@ -6,5 +6,8 @@ class Ingredient {
         this.unit = unit;
         this.amount = amount;
         this.optional = optional;
+        this._links = {};
     }
 }
+
+export default Ingredient;

@@ -14,6 +14,7 @@ const RecipePage = () => {
     let categoryChips = [];
     let ingredients = [];
     let instructions = [];
+    let quickStats = [];
     const getCategories = (loadedRecipe) => {
         fetch(loadedRecipe._links?.categories.href)
            .then((response) => response.json())
@@ -41,16 +42,30 @@ const RecipePage = () => {
      }, []);
 
      if(isRecipeLoaded) {
-        
-
+        //Load Ingredient list items
          for(const ingredient of recipe.ingredientList) {
-
             ingredients.push(<li><p>{ingredient.name} {ingredient.amount ? <i> - {ingredient.amount} {ingredient.unit}</i> : null} {ingredient.optional ? <i>- Optional</i> : null}</p></li>)
         }
 
+        //Load instruction list items
         for (const instruction of recipe.directions) {
             instructions.push(<li>{instruction}</li>)
         }
+
+        //Load Quick Stats
+        quickStats = (
+            <div className='quick-stats-box'>
+                    <h3>Quick Stats</h3>
+                    <ul>
+                        <li>Servings: 1</li>
+                        <li>Calories/Serving: 300</li>
+                        <li>{recipe.ingredientList.length} Ingredients</li>
+                        <li>Prep Time: 5 min</li>
+                        <li>Cook Time: 3 min</li>
+                        <li>Total Time: 8 min</li>
+                    </ul>
+                </div>
+        )
      }
      
 
@@ -85,16 +100,7 @@ const RecipePage = () => {
                 </div>
             </div>
             <div className="flex-initial w-64 quick-stats-left-line">
-                <div className='quick-stats-box'>
-                    <h3>Quick Stats</h3>
-                    <ul>
-                        <li>Servings: 1</li>
-                        <li>Calories/Serving: 300</li>
-                        <li>Prep Time: 5 min</li>
-                        <li>Cook Time: 3 min</li>
-                        <li>Total Time: 8 min</li>
-                    </ul>
-                </div>
+                {quickStats}
             </div>
         </div>
 

@@ -48,7 +48,7 @@ const HomePageComponent = () => {
      const listedCategories = [];
      for(const cat of categories) {
       console.log("Category: " + cat.name);
-      listedCategories.push(<CategoryComponent category={cat}></CategoryComponent>)
+      listedCategories.push(<Link to={"/categories/" + cat.id}><CategoryComponent category={cat}></CategoryComponent></Link>)
      }
 
     return (<div><div className="grid lg:grid-cols-4 gap-4 md:grid-cols-2 sm:grid-cols-1">

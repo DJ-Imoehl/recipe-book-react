@@ -8,6 +8,7 @@ class Recipe {
         this.ingredientList = ingredientList;
         this.directions = directions;
         this.categoryList = categoryList;
+        this._links = {};
     }
 
 

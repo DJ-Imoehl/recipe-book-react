@@ -1,10 +1,8 @@
 import './App.css';
-import HeadingComponent from './components/HeadingComponent';
 import HomePageComponent from './components/HomePageComponent';
+import CategoryPage from './pages/CategoryPage';
 import Layout from './pages/Layout';
 import AboutPage from './pages/AboutPage';
-import { ThemeProvider } from '@emotion/react';
-import { mainTheme } from './themes/MainTheme';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import RecipePage from './pages/RecipePage';
@@ -18,6 +16,7 @@ function App() {
           <Route path="/about" element={<AboutPage/>}></Route>
           <Route path="/recipes" element={<HomePageComponent/>}></Route>
           <Route path="/recipes/:recipeId" element={<RecipePage/>}></Route>
+          <Route path="/categories/:categoryId" element={<CategoryPage/>}></Route>
           <Route path="*" element={<HomePageComponent/>}></Route>
         </Route>
       </Routes>

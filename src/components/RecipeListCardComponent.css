@@ -1,0 +1,28 @@
+.card {
+    margin: 20px;
+    box-shadow: 2px 2px 2px #636363;
+    min-height: 50px;
+    background-color: ghostwhite;
+    border-radius: 5px;
+    border: black 1px solid;
+    padding: 10px;
+    text-align: 'center';
+}
+
+.extra-info {
+    margin-bottom: 10px;
+}
+
+.recipe-title {
+    font-size: 36px;
+    text-align: left;
+}
+
+.recipe-image-container {
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.recipe-image {
+    object-fit: cover;
+}
